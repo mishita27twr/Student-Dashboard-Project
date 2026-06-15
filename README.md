@@ -1,124 +1,161 @@
 # Student Learning Dashboard
 
-A premium, futuristic Student Learning Dashboard built with **Next.js 15 App Router**, TypeScript, Tailwind CSS, Framer Motion, and Supabase.
+A modern and futuristic Student Learning Dashboard built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, and **Supabase**. The application provides an interactive learning experience with animated dashboards, course tracking, achievements, analytics, and responsive navigation.
+
+## 🌐 Live Demo
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20App-blue?style=for-the-badge)](https://student-dashboard-project-xsjh.vercel.app/)
+
+---
+
+## Features
+
+* Modern dark-themed UI
+* Fully responsive design
+* Built with Next.js App Router
+* Smooth animations using Framer Motion
+* Course management dashboard
+* Achievements tracking section
+* Analytics and progress visualization
+* User profile section
+* Settings page
+* Course search functionality
+* Animated progress indicators
+* Bento-grid inspired dashboard layout
+
+---
 
 ## Tech Stack
 
-- **Next.js 15** — App Router, Server Components, file-system routing
-- **TypeScript** — strict typing throughout
-- **Tailwind CSS v4** — utility-first styling
-- **Framer Motion** — all animations (stagger, spring physics, layoutId)
-- **Lucide React** — icons
-- **Supabase** — PostgreSQL database (optional — falls back to mock data)
-- **Recharts** — analytics bar chart
+* Next.js 15
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+* Recharts
+* Lucide React Icons
+* Supabase
 
-## Getting Started
+---
 
-### 1. Install dependencies
+## 📸 Screenshots
+
+### Dashboard
+
+![Dashboard](./screenshots/dashboard.png)
+
+### Courses
+
+![Courses](./screenshots/courses.png)
+
+### Achievements
+
+![Achievements](./screenshots/achievements.png)
+
+### Analytics
+
+![Analytics](./screenshots/analytics.png)
+
+### Profile
+
+![Profile](./screenshots/profile.png)
+
+---
+
+## Project Structure
+
+```bash
+app/
+components/
+├── animations/
+├── dashboard/
+├── layout/
+└── ui/
+constants/
+hooks/
+lib/
+public/
+services/
+types/
+```
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/mishita27twr/Student-Dashboard-Project.git
+```
+
+Navigate to the project folder:
+
+```bash
+cd Student-Dashboard-Project
+```
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-### 2. Set up environment variables
-
-Copy `.env.example` to `.env.local`:
-
-```bash
-cp .env.example .env.local
-```
-
-Fill in your Supabase credentials (optional — app works without them using mock data):
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-```
-
-### 3. Set up Supabase (optional)
-
-If you want live data from Supabase, create a `courses` table:
-
-```sql
-create table courses (
-  id uuid primary key default gen_random_uuid(),
-  title text not null,
-  progress integer not null default 0,
-  icon_name text not null default 'BookOpen',
-  description text not null default '',
-  lessons_completed integer not null default 0,
-  total_lessons integer not null default 10,
-  last_accessed_at timestamptz not null default now(),
-  created_at timestamptz not null default now()
-);
-
--- Seed sample data
-insert into courses (title, progress, icon_name, description, lessons_completed, total_lessons) values
-  ('Advanced React Patterns', 78, 'Code2', 'Master advanced React concepts including compound components, render props, and custom hooks.', 8, 10),
-  ('Next.js Mastery', 45, 'Layers', 'Build production-ready apps with Next.js 15 App Router and server components.', 5, 12),
-  ('UI Animation Fundamentals', 92, 'Sparkles', 'Implement stunning animations with Framer Motion, CSS transitions, and GSAP.', 11, 12),
-  ('TypeScript Essentials', 31, 'FileType', 'Deep dive into TypeScript generics, conditional types, and mapped types.', 4, 13);
-```
-
-### 4. Run the development server
+Run locally:
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
-### 5. Build for production
+Open:
 
 ```bash
-npm run build
-npm start
+http://localhost:3000
 ```
 
-## Project Structure
+---
 
-```
-app/
-├── layout.tsx          # Root layout with sidebar + mobile nav
-├── page.tsx            # Dashboard (Server Component — fetches summary + courses)
-├── loading.tsx         # Global skeleton loader
-├── error.tsx           # Global error boundary
-├── courses/            # Courses page with search + animated modal
-├── achievements/       # Achievement badge wall
-├── analytics/          # Recharts bar chart + animated counters
-├── profile/            # User profile card
-└── settings/           # Accent color selector + notification toggles
+## Environment Variables
 
-components/
-├── layout/
-│   ├── sidebar.tsx     # Collapsible desktop sidebar with Framer Motion layoutId
-│   └── mobile-nav.tsx  # Hamburger mobile navigation
-└── dashboard/
-    ├── dashboard-client.tsx
-    ├── courses-client.tsx
-    ├── achievements-client.tsx
-    ├── analytics-client.tsx
-    ├── profile-client.tsx
-    └── settings-client.tsx
+Create a `.env.local` file:
 
-lib/supabase/
-├── client.ts           # Browser Supabase client
-└── server.ts           # Server-side Supabase client
-
-services/               # Data fetching (Supabase or mock fallback)
-types/index.ts          # TypeScript interfaces (Course, User, Achievement, Analytics)
-hooks/use-counter.ts    # Animated number counter hook
+```env
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-## Features
+---
 
-- **Dark mode only** — deep near-black backgrounds with glassmorphism cards
-- **Responsive** — desktop sidebar → tablet icon-only → mobile hamburger
-- **Animated sidebar** — `layoutId` active indicator with spring transitions
-- **Bento grid** — multi-column responsive dashboard layout
-- **Activity heatmap** — GitHub-style 52-week contribution graph
-- **Course modal** — animated `AnimatePresence` overlay with course detail
-- **Animated counters** — easeOutQuart number animations on Analytics page
-- **Accent color switcher** — live CSS variable update (Purple/Blue/Green/Orange)
-- **Server Components** — all pages are async Server Components; client components only where interactivity is needed
-- **Graceful fallback** — all data services fall back to mock data when Supabase is not configured
+## Challenges Faced
+
+* Migrating the project from Vite to Next.js App Router.
+* Fixing TypeScript and Framer Motion variant type issues.
+* Creating responsive layouts for desktop, tablet, and mobile devices.
+* Optimizing animations while avoiding layout shifts.
+* Structuring reusable and scalable components.
+
+---
+
+## Future Enhancements
+
+* User authentication
+* Real-time learning updates
+* Certificate generation
+* Personalized recommendations
+* Course enrollment system
+* Notification center
+
+---
+
+## Author
+
+**Mishita Tiwari**
+
+GitHub: https://github.com/mishita27twr
+
+LinkedIn: https://www.linkedin.com/in/mishita-tiwari-927ba5234/
+
+---
+
+## Support
+
+If you found this project helpful, consider giving it a star on GitHub.
