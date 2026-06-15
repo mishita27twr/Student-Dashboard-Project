@@ -49,11 +49,11 @@ A modern and futuristic Student Learning Dashboard built with **Next.js 15**, **
 
 ### Achievements
 
-![Achievements](./screenshots/achievements.png)
+![Achievements](./screenshots/achievement.png)
 
 ### Analytics
 
-![Analytics](./screenshots/analytics.png)
+![Analytics](./screenshots/analystics.png)
 
 ### Profile
 
